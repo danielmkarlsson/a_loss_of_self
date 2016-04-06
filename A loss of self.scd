@@ -44,7 +44,7 @@ Pdef( // All of these ones that start with P are part of Patterns which is one w
                     Pseq([32, 44, 51, 20, 28]),
                 ], inf)
         ),
-		\harmonic, Pexprand(1, 11, inf).round, // You know about the Harmonic Series right? It is The Bees Knees let me tell you.
+		\harmonic, Pexprand(1, 9, inf).round, // You know about the Harmonic Series right? It is The Bees Knees let me tell you.
 		\freqDeviation, Pkey(\harmonic) * (Pkey(\midinote) + Pwhite(-0.25, 0.0, inf)).midicps, // The size of the glissando.
 		\atk, Pwhite(15.0, 45.0, inf), // The possible durations of the Attack part of the amplitude envelope.
 		\hold, Pwhite(4.0, 14.0, inf), // This is where the Sustain or Hold part of the envelope gets made.
