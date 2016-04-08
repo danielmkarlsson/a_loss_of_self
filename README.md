@@ -33,6 +33,7 @@ In the Synthdef there is code that can be looked at to:
 
 • High Pass Filter (used here as a DC problems and rumbly low end fix)
 
+
 In the Pdef there is code that can be looked at to:
 
 • Learn how to connect to sequence a Synthdef using the Patterns paradigm.
