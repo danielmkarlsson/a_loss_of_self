@@ -4,40 +4,30 @@
 (
 SynthDef.new(\sine, { // This synth definition has a bunch of stuff in it that makes this sound the way it does. It's the instrument.
 	arg freq = 440, atk = 0.005, rel = 0.3, amp = 1, pan = 0, gain = 1, modIndex = 2, phaseModIndex = 2,
-	lpfFreq =18000, resonance = 0, hold = 6.0, freqDeviation = 0.975, transitionTime = 0.875, resonzQ = 0.1 ;
-	var sig, mod, phasemod, env ;
-	freq = freq.clip(20, 20000) ; // .clip because better safe than sorry. SC can get superLoud otherwise.
-	mod = SinOsc.ar(freq/2, 0, Line.ar(0, modIndex, transitionTime) * freq) ; // Frequency Modulation
-	phasemod = SinOsc.ar(freq, 0, phaseModIndex) ; // Phase Modulation
-	sig = SinOsc.ar(XLine.ar(freqDeviation, freq, atk) + mod, phasemod) ; // Glissando
-	env = EnvGen.kr(Env.new([0, 1, 1, 0], [atk, hold, rel], \sine)) ; // Envelope
-	sig = Pan2.ar(sig, Line.ar(0,pan, transitionTime), amp) ; // Panning
-	sig = (sig * 0.7) + (Pluck.ar(sig, PinkNoise.ar(), 0.25, freq.reciprocal, 64.0, 0.5) * 0.3) ; // Mixer
-	sig = RLPF.ar(sig, lpfFreq.clip(200, 20000), (Line.ar(1.0,resonance, resonance, atk)).clip(0.1, 1.0) ) * env ; // Resonant Low Pass Filter
-	sig = tanh(Line.ar(0.001, gain, transitionTime) * sig) ; // A kind of distortion
-	sig = (sig * 0.75) + (Resonz.ar(sig, freq, resonzQ) * 1.125) ; // A kind of ringing filter
-	sig = sig * AmpCompA.kr(freq,12.978271799373) ; // AmpComp does a kind of compensation that follows your hearing. It''s good.
-	sig = Compander.ar(sig,sig,0.25, 0.33, 1, 0.002, 0.1 ); // Compressor
-
-		DetectSilence.ar(sig.sum, 0.000001, doneAction:2) ; // This is intended to release synths when they become silent.
-	Out.ar(60, Limiter.ar(sig,0.1)) ; // Limiter
-
-}).add;
-
-SynthDef(\master, {
-	|inBus|
-	var sig ;
-	sig = In.ar(inBus, 2)  ;
+	lpfFreq =18000, resonance = 0, hold = 6.0, freqDeviation = 0.975, transitionTime = 0.875, resonzQ = 0.1;
+	var sig, mod, phasemod, env;
+	freq = freq.clip(20, 20000); // .clip because better safe than sorry. SC can get superLoud otherwise.
+	mod = SinOsc.ar(freq/2, 0, Line.ar(0, modIndex, transitionTime) * freq); // Frequency Modulation
+	phasemod = SinOsc.ar(freq, 0, phaseModIndex); // Phase Modulation
+	sig = SinOsc.ar(XLine.ar(freqDeviation, freq, atk) + mod, phasemod); // Glissando
+	env = EnvGen.kr(Env.new([0, 1, 1, 0], [atk, hold, rel], \sine)); // Envelope
+	sig = Pan2.ar(sig, Line.ar(0,pan, transitionTime), amp); // Panning
+	sig = (sig * 0.8) + (Pluck.ar(sig, PinkNoise.ar(), 0.25, freq.reciprocal, 64.0, 0.5) * 0.4); // Mixer
+	sig = RLPF.ar(sig, lpfFreq.clip(200, 20000), (Line.ar(1.0,resonance, resonance, atk)).clip(0.1, 1.0) ) * env; // Resonant Low Pass Filter
+	sig = tanh(Line.ar(0.001, gain, transitionTime) * sig); // A kind of distortion
+	sig = (sig * 0.75) + (Resonz.ar(sig, freq, resonzQ) * 1.125); // A kind of ringing filter
+	sig = sig * AmpCompA.kr(freq,12.978271799373); // AmpComp does a kind of compensation that follows your hearing. It''s good.
+	sig = Compander.ar(sig,sig,0.25, 0.33, 1, 0.002, 0.1); // Compressor
 	sig = LeakDC.ar(sig) ; // This protects against DC offset
 	sig = HPF.ar( sig, 32 )  ; // This is a high pass filter.
-	Out.ar(0, Limiter.ar( sig ))
-}).add
-) ;
 
-(
+		DetectSilence.ar(sig.sum, 0.000001, doneAction:2); // This is intended to release synths when they become silent.
+	Out.ar(0, Limiter.ar(sig,0.1)); // Limiter
 
-Synth.tail(s, \master, [inBus: 60] ) ;
-// This part below makes all the things that happen in the music happen. It also controls when these things happen. It's the score.
+}).add;
+);
+
+( // This part below makes all the things that happen in the music happen. It also controls when these things happen. It's the score.
 Pdef( // All of these ones that start with P are part of Patterns which is one way of making music in SuperCollider. It is a good way.
 	\sinepat,
 	Pseed(2160,Pbind( // Change this number for another permutation of infinite duration that will be the same every time you run it.
