@@ -36,9 +36,9 @@ In the Synthdef there is code that can be looked at to:
 
 In the Pdef there is code that can be looked at to:
 
-• Learn how to connect to sequence a Synthdef using the Patterns paradigm.
+• Learn how to do some sequencing of parameters in a Synthdef using the Patterns paradigm.
 
-• Pseed (Set a number for a permutation of infinite duration that will be the same every time you run it.
+• Pseed (Set a number for a permutation of infinite duration that will be the same every time you run it)
 
 • Pwhite (Random floats between two values)
 
