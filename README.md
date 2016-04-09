@@ -50,4 +50,4 @@ In the Pdef there is code that can be looked at to:
 
 • An example of patterns in patterns. SC let's you mix & match or chain things together.
 
-• Pkey (So you can have one parameter basing it's choices on other parameters)
+• Pkey (So that choices can be made concerning one parameter based on the outcome of another parameter)
