@@ -25,7 +25,7 @@ In the Synthdef there is code that can be looked at to:
 
 • Resonz (A kind of ringing filter)
 
-• AmpCompA (Does a kind of compensation that follows your hearing. It's good.
+• AmpCompA (Does a kind of compensation that follows your hearing. It's good)
 
 • Compression using Compander. (Too much dynamics is not good)
 
