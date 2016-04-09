@@ -13,7 +13,7 @@ In the Synthdef there is code that can be looked at to:
 
 • Glissando using XLine (Xline is exponential which I like for frequency domain stuff but you may prefer linear)
 
-• Ampplitude envelope using EnvGen & Env. (fade in, hold, fade out, repeat w/ new values)
+• Amplitude envelope using EnvGen & Env. (fade in, hold, fade out, repeat w/ new values)
 
 • Panning.
 
