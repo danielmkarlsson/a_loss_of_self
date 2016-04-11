@@ -2,6 +2,8 @@
 A drone of infinite duration.
 Made with SuperCollider 3.7
 This .scd contains working code that can be taken apart to make your own Synthdef (which can make a sound) and your own Pdef (which can make sequencing).
+At the top there is a no previous experience explanation of how to get sound going in SuperCollider and the patch running.
+Throughout the .scd I have made as few assumptions about previous knowledge of SuperCollider although I have presupposed that the reader has some previous experience with synthesis and working with sound in general. I also trust that you are able to search online. This is in my opinion a reasonable level of trust to have in a user.
 
 In the Synthdef there is code that can be looked at to: 
 
