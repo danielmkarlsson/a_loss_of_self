@@ -28,6 +28,8 @@ s.waitForBoot { // This boots the server for you. Yup, it's swank. Cmd + B boots
 		}).add;
 	);
 
+	s.sync; // This makes sure the synth has been created before we start sequencing it. The order is important.
+
 	( // This part below makes all the things that happen in the music happen. It also controls when these things happen. It's The Sequencer.
 		Pdef( // All of these ones that start with P are part of Patterns which is one way of making music in SuperCollider. It is a good way.
 			\sinepat, // The name of the sequencer can be anything. It's just so we can tell 'em apart in case there's more than one.
