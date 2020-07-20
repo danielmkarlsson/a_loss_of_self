@@ -3,7 +3,7 @@
 // 2: Press Shift and hold it down and then press Enter to run everything
 s.waitForBoot { // This boots the server for you. Yup, it's swank. Cmd + B boots the server otherwise
 	(
-		SynthDef.new(\sine, { // This synth definition has a bunch of stuff in it that makes this thing sound the way it does. It's The Synthesizer.
+		SynthDef.new(\als, { // This synth definition has a bunch of stuff in it that makes this thing sound the way it does. It's The Synthesizer.
 			arg freq = 440, atk = 0.005, rel = 0.3, amp = 1, pan = 0, gain = 1, modIndex = 2, phaseModIndex = 2, // Arguments. A type of data.
 			lpfFreq =18000, resonance = 0, hold = 6.0, freqDeviation = 0.975, transitionTime = 0.875, resonzQ = 0.1;
 			var sig, mod, phasemod, env; // Variables. Also a datatype. Computer Science is a thing but nevermind for now ok? Just be aware of Variables existing in the world.
